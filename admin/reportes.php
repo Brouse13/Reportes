@@ -71,11 +71,14 @@ require ('validate_reportes.php');
 		</div>
 	</div>
 	<?php 		
-		$Select='Reportante';
+		$Select='Reportante';//Ordenar datos del los usuarios mediante GET default --> Reportante
 		if(isset($_GET['order'])){
 			if($_GET['order']=='Reportado'||$_GET['order']=='Reportante'||$_GET['order']=='Motivo'||$_GET['order']=='Resueltopor'||$_GET['order']=='Estado'){
 				$Select=$_GET['order'];
 			}
+
+			if($row['Estado']=='resuelto'){$EstadoDisplay='Resuelto';$ColorRow='table-success';}else if($row['Estado']=='rechazado'){$EstadoDisplay='Rechazado';$ColorRow='table-danger';}
+					else{$EstadoDisplay='Esperando';$ColorRow='table-warning';}//Colores de las tablas según el estado del reporte
 		}
 		
 	$sql = 'SELECT * FROM reportes ORDER BY '.$Select.'';
@@ -93,8 +96,7 @@ require ('validate_reportes.php');
 				</thead>
 				<tbody id="reportes">';
 			while($row = $result->fetch_array()){
-				if($row['Estado']=='resuelto'){$EstadoDisplay='Resuelto';$ColorRow='table-success';}else if($row['Estado']=='rechazado'){$EstadoDisplay='Rechazado';$ColorRow='table-danger';}
-					else if($row['Estado']=='sin_resolver'){$EstadoDisplay='Esperando';$ColorRow='table-warning';}
+				
 					
 					echo '<tr id="'.$row['Id'].'" class="'.$ColorRow.'">';
 					echo '<td>'.$row['Reportante'].'</td>';
@@ -111,7 +113,7 @@ require ('validate_reportes.php');
 	<br>
 </div>
 <script>
-$(document).ready(function(){
+$(document).ready(function(){//Jquery de la búsqueda en reportes (NO HABILITADA)
   $("#buscar").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#reportes tr").filter(function() {
