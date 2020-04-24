@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php include 'comunes/header.php'; ?>
+<?php include '../comunes/header.php'; ?>
 <body>
 <div class="container">
 	<div class="row">

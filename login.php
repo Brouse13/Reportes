@@ -17,7 +17,7 @@ session_start();
 				
 				$stm->bind_result($Id, $Password, $Type);
 				$stm->fetch();
-				if($_POST['pss'] == $Password){
+				if(password_verify($_POST['pss'],$Password)){
 					session_regenerate_id();
 					$_SESSION['Logged'] = true;
 					$_SESSION['Id'] = $Id;

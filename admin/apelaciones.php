@@ -2,11 +2,11 @@
 require_once('../session.php');
 require_once '../db.php';
 
-require ('functions.php');
+require ('functions_reportes.php');
 ?>
 <!DOCTYPE html>
 <html>
-<?php include 'comunes/header.php'; ?>
+<?php include '../comunes/header.php'; ?>
 <body>
 <?php 
 require ('validate_reportes.php');
@@ -39,14 +39,14 @@ require ('validate_reportes.php');
 		  <a class="nav-link" href="reportes.php">Reportes</a>
 		</li>
 		<li class="nav-item active">
-		  <a class="nav-link" href="#">Apelaciones</a>
+		  <a class="nav-link" href="apelaciones.php">Apelaciones</a>
 		</li>
 	</ul>
 </nav>
 	<hr>
 	<div class="row">
 		<div class="col-sm-12">
-			<h2 class="text-center" style="color:orange">Apelaciones</h2>
+			<h2 class="text-center" style="color:orange">Reportes</h2>
 		</div>
 	</div>
 	<hr>
@@ -60,17 +60,15 @@ require ('validate_reportes.php');
 			<div class="dropdown float-left">
 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Ordenar por:</button>
 					<div class="dropdown-menu">
-					  <a class="dropdown-item" href="reportes.php?order=Reportante">Reportado</a>
+					  <a class="dropdown-item" href="reportes.php?order=Reportante">Reportante</a>
+					  <a class="dropdown-item" href="reportes.php?order=Reportado">Reportado</a>
 					  <a class="dropdown-item" href="reportes.php?order=Staff">Staff</a>
 					  <a class="dropdown-item" href="reportes.php?order=Motivo">Sanción</a>
 					  <a class="dropdown-item" href="reportes.php?order=Estado">Estado</a>
 					</div>
 			  </div>
-			<p class="float-right">Numero de apelaciones: <?php echo $count;?></p>
+			<p class="float-right">Numero de reportes: <?php echo $count;?></p>
 		</div>
-	</div>
-	<div class="mb-4 col-sm-3 row">
-	  <input id="buscar" class="form-control" type="text" placeholder="Buscar">
 	</div>
 	<?php 		
 		$Select='Reportante';
@@ -83,21 +81,23 @@ require ('validate_reportes.php');
 	$sql = 'SELECT * FROM reportes ORDER BY '.$Select.'';
 	if($result = $con->query($sql)){
 		if($result->num_rows>0){
-			echo'<table id="reportes" class="table table-hover">
+			echo'<table id="reportes_table" class="table table-striped table-hover">
 				<thead class="thead-dark">
 				  <tr>
+					<th>Reportante</th>
 					<th>Reportado</th>
 					<th>Motivo</th>
 					<th>Resuelto Por</th>
 					<th>Editar</th>	
 				  </tr>
 				</thead>
-				<tbody id="reportes" class="table-stripped table-hover">';
+				<tbody id="reportes">';
 			while($row = $result->fetch_array()){
 				if($row['Estado']=='resuelto'){$EstadoDisplay='Resuelto';$ColorRow='table-success';}else if($row['Estado']=='rechazado'){$EstadoDisplay='Rechazado';$ColorRow='table-danger';}
 					else if($row['Estado']=='sin_resolver'){$EstadoDisplay='Esperando';$ColorRow='table-warning';}
 					
 					echo '<tr id="'.$row['Id'].'" class="'.$ColorRow.'">';
+					echo '<td>'.$row['Reportante'].'</td>';
 					echo '<td>'.$row['Reportado'].'</td>';
 					echo '<td>'.$row['Motivo'].'</td>';
 					echo '<td>'.$row['Resueltopor'].'</td>';
@@ -108,6 +108,7 @@ require ('validate_reportes.php');
 	}?>
 	</tbody>
 	</table>
+	<br>
 </div>
 <script>
 $(document).ready(function(){
@@ -119,9 +120,8 @@ $(document).ready(function(){
   });
 });
 
-
 $(document).ready(function() {
-    $('#example').DataTable( {
+    $('#reportes_table').DataTable( {
         "language": {
             "lengthMenu": "Mostrar _MENU_ reportes por tabla",
             "zeroRecords": "No se han encontrado datos",
@@ -134,8 +134,12 @@ $(document).ready(function() {
                     "sLast":     "Último",
                     "sNext":     "Siguiente",
                     "sPrevious": "Anterior"
-                },
-        }
+            },
+        },
+		columnDefs: [{
+		  targets: 3,
+		  className: 'dt-body-center'
+		}]		
     } );
 } );
 </script>

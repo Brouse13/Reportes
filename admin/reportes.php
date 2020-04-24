@@ -6,7 +6,7 @@ require ('functions_reportes.php');
 ?>
 <!DOCTYPE html>
 <html>
-<?php include 'comunes/header.php'; ?>
+<?php include '../comunes/header.php'; ?>
 <body>
 <?php 
 require ('validate_reportes.php');
