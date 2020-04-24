@@ -67,8 +67,13 @@ require ('validate_reportes.php');
 					  <a class="dropdown-item" href="reportes.php?order=Estado">Estado</a>
 					</div>
 			  </div>
-			<p class="float-right">Numero de reportes: <?php echo $count;?></p>
 		</div>
+		<p class="float-right">Numero de reportes: <?php echo $count;?></p>
+	</div>
+	<div class="row">
+		<form class="col form-inline mb-sm-4">
+			<input class="form-control mr-sm-2" id="buscar" type="search" placeholder="Buscar">
+		</form>
 	</div>
 	<?php 		
 		$Select='Reportante';//Ordenar datos del los usuarios mediante GET default --> Reportante
