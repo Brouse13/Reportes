@@ -77,8 +77,7 @@ require ('validate_reportes.php');
 				$Select=$_GET['order'];
 			}
 
-			if($row['Estado']=='resuelto'){$EstadoDisplay='Resuelto';$ColorRow='table-success';}else if($row['Estado']=='rechazado'){$EstadoDisplay='Rechazado';$ColorRow='table-danger';}
-					else{$EstadoDisplay='Esperando';$ColorRow='table-warning';}//Colores de las tablas según el estado del reporte
+			
 		}
 		
 	$sql = 'SELECT * FROM reportes ORDER BY '.$Select.'';
@@ -96,7 +95,8 @@ require ('validate_reportes.php');
 				</thead>
 				<tbody id="reportes">';
 			while($row = $result->fetch_array()){
-				
+				if($row['Estado']=='resuelto'){$EstadoDisplay='Resuelto';$ColorRow='table-success';}else if($row['Estado']=='rechazado'){$EstadoDisplay='Rechazado';$ColorRow='table-danger';}
+					else{$EstadoDisplay='Esperando';$ColorRow='table-warning';}//Colores de las tablas según el estado del reporte
 					
 					echo '<tr id="'.$row['Id'].'" class="'.$ColorRow.'">';
 					echo '<td>'.$row['Reportante'].'</td>';
