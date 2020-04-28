@@ -118,7 +118,7 @@ require ('validate_reportes.php');
 	<br>
 </div>
 <script>
-$(document).ready(function(){//Jquery de la búsqueda en reportes (NO HABILITADA)
+$(document).ready(function(){//Jquery de la búsqueda en reportes
   $("#buscar").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#reportes tr").filter(function() {
