@@ -2,7 +2,7 @@
 require('../session.php');
 require('../db.php');
 
-if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método para obtener rango del propietario de la sesión
+if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método para obtener rango del propietario de la sesión	
 	$stm->bind_param('s',$_SESSION['User']);
 	$stm->execute();
 	$stm->store_result();
@@ -10,7 +10,7 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 	$stm->fetch();
 }
 $count=0;
-if($stm = $con->prepare('SELECT * FROM reportes WHERE Reportante=?')){//Método para obtener rango del propietario de la sesión
+if($stm = $con->prepare('SELECT * FROM reportes WHERE Reportante=?')){//Método para obtener el número de reportes
 	$stm->bind_param('s',$_SESSION['User']);
 	$stm->execute();
 	$stm->store_result();
