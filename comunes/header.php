@@ -7,4 +7,6 @@
 	<script src="https://kit.fontawesome.com/c7b2024f07.js" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="http://www.localhost/reportes/css/style.css">
+
+	<link rel="icon" type="image/png" href="https://foro.dragonballcreativemc.com/img/faviconforum.png" sizes="32x32">
 </head>
