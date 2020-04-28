@@ -3,9 +3,9 @@ if(isset($_POST['aprobar'])){
 		if(isset($_GET['id'])){
 			$Result = GetId($_GET['id'],$con);
 			if($Result[5]!='resuelto'){
-				if($stm = $con->query("UPDATE reportes SET Estado='resuelto',Resueltopor='".$_SESSION['User']."',
-									Comentarios_staff='".$_POST['comentarios_staff']."', Comentarios_user='".$_POST['comentarios_user']."'
-									WHERE id=".$_GET['id']."")){}
+				if($stm = $con->query("UPDATE reportes SET Estado='resuelto',Resueltopor='".$_SESSION['User']."',Comentarios_staff='".$_POST['comentarios_staff']."',
+									 Dia_out=NOW(), Dia_out=NOW(),Comentarios_user='".$_POST['comentarios_user']."'
+									 WHERE id=".$_GET['id']."")){}
 				if($stm = $con->query("INSERT INTO log (User,Action,Time) VALUES ('".$_SESSION['User']."',
 										'Aceptar reporte ".$_GET['id']."',NOW())")){
 					header ('location: reportes.php');}
