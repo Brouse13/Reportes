@@ -38,7 +38,7 @@ function Fillform($Id,$con){
 					</div>
 					<div class="form-inline">
 						<label for="hora_in ">Hora:</label>
-						<input name"hora_in" type="text" class="form-control mb-2 col-sm-12" value="'.$Request[7].'" readonly/>
+						<input name="hora_in" type="text" class="form-control mb-2 col-sm-12" value="'.$Request[7].'" readonly/>
 					</div>
 					<div class="form-inline">
 						<label for="staff ">Resuelto por:</label>
