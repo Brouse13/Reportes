@@ -16,11 +16,11 @@
                     $Code = generarCodigo(5);
                     if($stm = $con->query('UPDATE users SET Verification_Code="'.$Code.'" WHERE Username="'.$_SESSION['User'].'"')){
                         echo '<div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">&times;</button>
-                        Por favor, usa el código '.$code.' para poder hacer reportes</div>';
+                        Por favor, usa el código '.$code.' en minecraft para verificar la cuenta</div>';
                     }
                 }
                 echo '<div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">&times;</button>
-                Por favor, usa el código '.$row['Verification_Code'].' para poder hacer reportes</div>';
+                Por favor, usa el código '.$row['Verification_Code'].' en minecraft para verificar la cuenta</div>';
             }
         }
     }
