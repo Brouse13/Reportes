@@ -37,10 +37,10 @@ if($stm = $con->prepare('SELECT * FROM reportes WHERE Reportante=?')){//Método 
 		  <a class="nav-link" href="index.php">Inicio</a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" href="reportes.php">Reportar</a>
+		  <a class="nav-link" href="reportar.php">Reportar</a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" href="apelaciones.php">Apelalar</a>
+		  <a class="nav-link" href="#">Apelalar</a>
 		</li>
 	</ul>
 </nav>
