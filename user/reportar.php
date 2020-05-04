@@ -15,7 +15,25 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 <?php include '../comunes/header.php'; ?>
 <body>
 <div class="container">
-<?php include '../comunes/verificar.php';  //Función para generar código de verificación y/o caonfirmar si el user está registrado?>
+<?php include '../comunes/verificar.php';  //Función para generar código de verificación y/o caonfirmar si el user está registrado
+	if(isset($_SESSION['error'])){
+		if($_SESSION['error'] == 'not_verified'){
+			echo '<div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">&times;</button>
+					Para poder reportar a un usuario tu cuenta tiene que estar verificada</div>';
+		}else if($_SESSION['error'] == 'user_null'){
+			echo '<div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">&times;</button>
+					El usuario al que reportaste no existe o no ha entrado al servidor</div>';
+		}
+		$_SESSION['error'] = null;
+	}else if(isset($_SESSION['success'])){
+		echo '<div class="alert alert-success alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">&times;</button>
+				Gracias por reportar y hacer que esta comunidad mejore</div>';
+		$_SESSION['success'] = null;
+	}
+
+
+
+?>
 <nav class="navbar navbar-expand-xl bg-dark navbar-dark">
 	<ul class="navbar-nav mr-auto">
 		<li class="nav-item dropdown active">
@@ -48,7 +66,7 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 			</div>
 			<div class="card-content">
 			<br>
-				<form class="form" action="" method="POST">
+				<form class="form" action="validate_reportar.php?reportante=<?php echo $_SESSION['User']; ?>" method="POST">
 					<div class="form-inline">
 						<label for="reportado ">Reportado:</label>
 						<input name="reportado" id="reportado" type="text" class="form-control mb-2 col-sm-12" placeholder="Brouse_13" required/>
@@ -65,7 +83,7 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 					<div class="form-group" id="chat"><!--Selector de sanciones sobre el chat -->
 						<label for="chat">Chat</label>
 						<select name="chat" class="form-control">
-						<option>Selecciona un motivo válido</option>
+						<option value="">Selecciona un motivo válido</option>
 						<option value="flood">Flood</option>
 						<option value="spam">Spam</option>
 						<option value="vocabulario_inadecuado">Vocabulario inadecuado</option>
@@ -86,7 +104,7 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 					<div class="form-group" id="juego"><!--Selector de las sanciones sobre el juego -->
 						<label for="juego">Jugabilidad</label>
 						<select name="juego" class="form-control">
-						<option>Selecciona un motivo válido</option>
+						<option value="">Selecciona un motivo válido</option>
 						<option value="hacks">Uso de hacks</option>
 						<option value="clientes_ilegales">Uso de clientes ilegales</option>
 						<option value="abuso_bugs">Abuso de bugs</option>
@@ -110,7 +128,7 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 					</div>
 
 					<div class="form-group">
-						<button type="submit" class="btn btn-success mt-sm-2">Enviar</button>
+						<button type="submit" id="enviar" class="btn btn-success mt-sm-2">Enviar</button>
 						<button type="reset" class="btn btn-primary mt-sm-2">Cancelar</button>
 					</div>
 				</form>
