@@ -10,9 +10,10 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 	$stm->fetch();
 }
 $reportes=0;
-if($stm = $con->prepare('SELECT * FROM reportes WHERE Esado="esperando"')){//Método para obtener el número de reportes
+if($stm = $con->prepare('SELECT * FROM reportes WHERE Estado="esperando"')){//Método para obtener el número de reportes
+	$stm->execute();
 	$stm->store_result();
-	$reportes= $stm->num_rows();
+	$reportes= $stm->num_rows;
 }
 ?>
 <!DOCTYPE html>
@@ -53,10 +54,10 @@ if($stm = $con->prepare('SELECT * FROM reportes WHERE Esado="esperando"')){//Mé
 
 	<div class="mt-sm-4"><!--Información de si hay nuevos reportes a atender con query de sql-->
 		<?php
-		if($reportes!=0){
-			echo '<div class="alert alert-info">Tienes '.$reportes.' nuevos reportes a atender</div>';
-		}else{
+		if($reportes == 0){
 			echo '<div class="alert alert-success">No tienes ningún reporte a responder :D</div>';
+		}else{
+			echo '<div class="alert alert-info">Tienes '.$reportes.' nuevos reportes a atender</div>';
 		}
 		?>
 	</div>
