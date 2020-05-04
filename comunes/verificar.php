@@ -17,8 +17,11 @@
                     if($stm = $con->query('UPDATE users SET Verification_Code="'.$Code.'" WHERE Username="'.$_SESSION['User'].'"')){
                     }
                 }
+                $_SESSION['verificado'] = false;
                 echo '<div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">&times;</button>
                 Por favor, usa el código '.$row['Verification_Code'].' en minecraft para verificar la cuenta</div>';
+            }else{
+                $_SESSION['verificado'] = true;
             }
         }
     }
