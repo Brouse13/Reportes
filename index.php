@@ -51,7 +51,7 @@ if(isset($_SESSION['User'])&&isset($_SESSION['Logged'])){
 						<input type="password" id="pss" name="pss" class="form-control" placeholder="Contraseña" required>
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Entrar" class="btn float-right login_btn">
+						<input type="submit" value="Entrar" class="btn float-right login_btn" style="background-color:#FFEFAB">
 					</div>
 				</form>
 			</div>
