@@ -84,20 +84,20 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 						<label for="chat">Chat</label>
 						<select name="chat" class="form-control">
 						<option value="">Selecciona un motivo válido</option>
-						<option value="flood">Flood</option>
-						<option value="spam">Spam</option>
-						<option value="vocabulario_inadecuado">Vocabulario inadecuado</option>
-						<option value="amenazas">Amenazas</option>
-						<option value="discriminacion">Discriminación</option>
-						<option value="insultos_jugador">Insultos a un jugador</option>
-						<option value="insultos_staff">Insultos al staff</option>
-						<option value="mencionar_servidores">Mencionar servidores</option>
-						<option value="contenido_inadecuado">Contenido inadecuado</option>
-						<option value="información_privada">Pasar información privada</option>
-						<option value="mentir_uso_comandos">Mentir sobre el uso de comandos</option>
-						<option value="hacerse_pasar_staff">Hacerse pasar por un staff</option>
-						<option value="nick_inapropiado">Nick inapropiado</option>
-						<option value="incitar_romprer_reglas">Incitar a romper las reglas</option>
+						<option>Flood</option>
+						<option>Spam</option>
+						<option>Vocabulario inadecuado</option>
+						<option>Amenazas</option>
+						<option>Discriminación</option>
+						<option>Insultos a un jugador</option>
+						<option>Insultos al staff</option>
+						<option>Mencionar servidores</option>
+						<option>Contenido inadecuado</option>
+						<option>Pasar información privada</option>
+						<option>Mentir sobre el uso de comandos</option>
+						<option>Hacerse pasar por un staff</option>
+						<option>Nick inapropiado</option>
+						<option>Incitar a romper las reglas</option>
 
 						</select>
 					</div>
@@ -105,21 +105,21 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 						<label for="juego">Jugabilidad</label>
 						<select name="juego" class="form-control">
 						<option value="">Selecciona un motivo válido</option>
-						<option value="hacks">Uso de hacks</option>
-						<option value="clientes_ilegales">Uso de clientes ilegales</option>
-						<option value="abuso_bugs">Abuso de bugs</option>
-						<option value="prestar_servicios">Prestar servicios Vip</option>
-						<option value="tpakill">Tpakill</option>
-						<option value="fly_combate">Fly en combate</option>
-						<option value="estafa de rango">Estafa de rango</option>
-						<option value="grifeo">Grifeo</option>
-						<option value="skin_inadecuada">Skin inadecuada</option>
-						<option value="construcciones_obscenas">Construcciones obscenas</option>
-						<option value="causar_lag">Causar lag</option>
-						<option value="objetos ilegales">Tener objetos ilegales</option>
-						<option value="afk_lobby_moba">Quedarse afk en el lobby de mobarena</option>
-						<option value="afk_partida_moba">Quedarse afk en la partida de mobarena</option>
-						<option value="afk_skyblock">Quedarse afk en skyblock</option>
+						<option>Uso de hacks</option>
+						<option>Uso de clientes ilegales</option>
+						<option>Abuso de bugs</option>
+						<option>Prestar servicios Vip</option>
+						<option>Tpakill</option>
+						<option>Fly en combate</option>
+						<option>Estafa de rango</option>
+						<option>Grifeo</option>
+						<option>Skin inadecuada</option>
+						<option>Construcciones obscenas</option>
+						<option>Causar lag</option>
+						<option>Tener objetos ilegales</option>
+						<option>Quedarse afk en el lobby de mobarena</option>
+						<option>Quedarse afk en la partida de mobarena</option>
+						<option>Quedarse afk en skyblock</option>
 						</select>
 					</div>
 					<div class="form-inline">
