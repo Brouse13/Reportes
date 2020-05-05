@@ -24,6 +24,9 @@ function GetId($Id,$con){
 
 function Fillform($Id,$con){
 	$Request = GetId($Id,$con);
+	if($Request[5]==NULL){
+		return;
+	}
 	echo '<div class="d-flex justify-content-center align-items-center">
 		<div id="info_user" class=" card col-sm-8"><!--d-none -->
 			<div class="card-header">
