@@ -36,7 +36,7 @@ if($stm = $con->prepare('SELECT * FROM reportes WHERE Estado="esperando"')){//MÃ
 		  <a class="nav-link" href="index.php">Inicio</a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" href="#">Reportes</a>
+		  <a class="nav-link" href="reportes.php">Reportes</a>
 		</li>
 		<li class="nav-item">
 		  <a class="nav-link" href="#">Apelaciones</a>
