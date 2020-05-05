@@ -126,29 +126,6 @@ $(document).ready(function(){//Jquery de la búsqueda en reportes
     });
   });
 });
-
-$(document).ready(function() {
-    $('#reportes_table').DataTable( {
-        "language": {
-            "lengthMenu": "Mostrar _MENU_ reportes por tabla",
-            "zeroRecords": "No se han encontrado datos",
-            "info": "Mostrando página _PAGE_ de _PAGES_",
-            "infoEmpty": "No hay datos disponibles",
-            "infoFiltered": "(Filtrando _MAX_ datos)",
-			"search": "Buscar",
-			"oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-            },
-        },
-		columnDefs: [{
-		  targets: 3,
-		  className: 'dt-body-center'
-		}]		
-    } );
-} );
 </script>
 </body>
 </html>
