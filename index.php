@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
 <?php include 'comunes/header.php'; ?>
-<body>
+<body style="background:none;!important;">
+
+	<hr><div class="row">
+		<div class="col-sm-12">
+			<h2 class="text-center" style="color:orange">Reportes DragonballCreative Minecraft</h2>
+		</div>
+	</div><hr>
+
 <div class="container">
 <?php 
 session_start();
@@ -23,13 +30,7 @@ if(isset($_SESSION['User'])&&isset($_SESSION['Logged'])){
 		Usuario o contraseña incorrectos</div>';$_SESSION['error']='';}
 	}
 ?>
-	<hr>
-	<div class="row">
-		<div class="col-sm-12">
-			<h2 class="text-center" style="color:orange">Reportes DragonballCreative Minecraft</h2>
-		</div>
-	</div>
-	<hr>
+
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">

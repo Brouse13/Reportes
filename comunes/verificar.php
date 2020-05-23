@@ -1,7 +1,7 @@
 <?php
     function generarCodigo($longitud) {//Genera un código aleatorio depeniendo de la lungitud dada como parámetro
         $key = '';
-        $pattern = '1234567890abcdefghijklmnopqrstuvwxyz';
+        $pattern = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $max = strlen($pattern)-1;
         for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
         return $key;

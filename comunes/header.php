@@ -12,15 +12,68 @@
 
 	<link rel="icon" type="image/png" href="https://foro.dragonballcreativemc.com/img/faviconforum.png" sizes="32x32">
 
-	<style>
-	.ui-menu-item-wrapper{
-		font-family: Arial;
-		font-size: 14px;
-		background-color:#FFE7C9;
-	}
-	.ui-widget-content{
-		background-color: #FFE7C9;
-	}
+  <style>
+    body {
+      background: #ebebeb url("https://foro.dragonballcreativemc.com/img/background-claro-dbc.png")
+    }
+    .ui-menu-item-wrapper{
+      font-family: Arial;
+      font-size: 14px;
+      background-color:#FFE7C9;
+    }
+    .ui-widget-content{
+      background-color: #FFE7C9;
+    }
 
+    /* Modal */
+    .modal {
+      display: block;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+
+
+    /* The Close Button (x) */
+    .cerrar {
+      position: absolute;
+      right: 25px;
+      top: 0;
+      color: #000;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .cerrar:hover,
+    .cerrar:focus,
+    .close:hover,
+    .close:focus
+    {
+      color: red;
+      cursor: pointer;
+    }
+
+    /* Add Zoom Animation */
+    .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s
+    }
+
+    @-webkit-keyframes animatezoom {
+      from {-webkit-transform: scale(0)} 
+      to {-webkit-transform: scale(1)}
+    }
+      
+    @keyframes animatezoom {
+      from {transform: scale(0)} 
+      to {transform: scale(1)}
+    }
 	</style>
 </head>

@@ -23,12 +23,10 @@ session_start();
 						session_regenerate_id();
 						$_SESSION['Logged'] = true;
 						$_SESSION['Id'] = $Id;
-						$_SESSION['User'] = $usr;
+						$_SESSION['User'] = $_POST['usr'];
 						$_SESSION['Type'] = $Type;
 						
-						if($_SESSION['Type']=='admin'){
-							header('Location: admin/index.php');
-						}else if($_SESSION['Type']=='staff'){
+						if($_SESSION['Type']=='admin' || $_SESSION['Type']=='staff'){
 							header('Location: staff/index.php');
 						}else{
 							header('Location: user/index.php');
@@ -42,18 +40,16 @@ session_start();
 						session_regenerate_id();
 						$_SESSION['Logged'] = true;
 						$_SESSION['Id'] = $Id;
-						$_SESSION['User'] = $usr;
+						$_SESSION['User'] = $_POST['usr'];
 						$_SESSION['Type'] = $Type;
 						
-						if($_SESSION['Type']=='admin'){
-							header('Location: admin/index.php');
-						}else if($_SESSION['Type']=='staff'){
+						if($_SESSION['Type']=='admin' || $_SESSION['Type']=='staff'){
 							header('Location: staff/index.php');
 						}else{
 							header('Location: user/index.php');
 						}
 					}else{
-					$_SESSION['error']='fail_login';header ('location: index.php');
+						$_SESSION['error']='fail_login';header ('location: index.php');
 					}
 
 				}else{

@@ -1,19 +1,43 @@
 <?php
-require('../session.php');
-require('../db.php');
-
-if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método para obtener rango del propietario de la sesión	
-	$stm->bind_param('s',$_SESSION['User']);
-	$stm->execute();
-	$stm->store_result();
-	$stm->bind_result($Rango);
-	$stm->fetch();
-}
+require_once ('../session.php');
+require_once ('../db.php');
+require_once ('../functions.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 <?php include '../comunes/header.php'; ?>
 <body>
+
+<nav class="navbar navbar-expand-xl bg-dark navbar-dark"><!-- Navbar -->	
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+			<a class="nav-link" href="index.php">Inicio</a>
+			</li>
+			<li class="nav-item active">
+			<a class="nav-link" href="reportar.php">Reportar</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link proximamente" href="#">Apelalar</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav">
+			<li class="nav-item dropdown active form-inline mr-sm-4	"><!-- Desplegable de la derecha del menu con el nombre...-->
+				<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><?php echo 'Hola '.$_SESSION['User'];?></a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="#">Cuenta</a>
+					<a class="dropdown-item" href="#">Cambiar contraseña</a>
+					<a class="dropdown-item" href="../logout.php">Salir</a>
+				</div>
+			</li>
+		</ul>	
+	</div>
+</nav><!-- Fin de la navbar -->
+
 <div class="container">
 <?php include '../comunes/verificar.php';  //Función para generar código de verificación y/o caonfirmar si el user está registrado
 	if(isset($_SESSION['error'])){
@@ -30,36 +54,17 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 				Gracias por reportar y hacer que esta comunidad mejore</div>';
 		$_SESSION['success'] = null;
 	}
-
-
-
 ?>
-<nav class="navbar navbar-expand-xl bg-dark navbar-dark">
-	<ul class="navbar-nav mr-auto">
-		<li class="nav-item dropdown active">
-		  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><?php echo 'Hola '.$_SESSION['User'];?></a>
-		  <div class="dropdown-menu">
-			<a class="dropdown-item" href="#">Cuenta</a>
-			<a class="dropdown-item" href="#">Cambiar contraseña</a>
-			<a class="dropdown-item" href="../logout.php">Salir</a>
-		  </div>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link" href="index.php">Inicio</a>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link active" href="reportar.php">Reportar</a>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link" href="#">Apelalar</a>
-		</li>
-	</ul>
-</nav>
-	<hr>
+
+	<div style="display:none;" class="dialog" title="Próximamente">
+		<p>Estamos trabajando para poder ofreceros más y nuevas ventajas, cuando esté disponible se avisará vía foro.</p>
+		<p>Att: El equipo de administración</p>
+	</div>
+
 	<!-- Inicio del body-->
 
     <div><!-- Formulario para crear nuevos reportes-->
-    <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center align-items-center mt-sm-4">
 		<div id="info_user" class=" card col-sm-8"><!--d-none -->
 			<div class="card-header">
 			<h4 id="info_user_title" class="text-center" style="color:orange">Reportar a un usuario</h4>
@@ -129,11 +134,9 @@ if($stm = $con->prepare('SELECT Rango FROM users WHERE Username=?')){//Método p
 
 					<div class="form-group">
 						<button type="submit" id="enviar" class="btn btn-success mt-sm-2">Enviar</button>
-						<button type="reset" class="btn btn-primary mt-sm-2">Cancelar</button>
 					</div>
 				</form>
 			</div>
-		<hr>
 		</div>
 	</div>
 
@@ -164,7 +167,6 @@ $(document).ready(function() {
   });
 });
 
-
 $(function() {
     $("#reportado").autocomplete({
         source: "../comunes/buscar.php?",
@@ -174,6 +176,12 @@ $(function() {
         }
     });
 });
+
+$(".proximamente").click(function (e) { 
+		$(function() {
+			$(".dialog").dialog();
+		});
+	});
 </script>
 
 </body>
